@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Dragon - Books</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="book-container">
+        <h2 id="genre-title"></h2>
+        <div id="book-list" class="book-list">
+            <!-- Books will load dynamically -->
+        </div>
+    </div>
+    <script>
+        const genre = localStorage.getItem("selectedGenre");
+        const books = {
+            "self-help": [
+                { title: "Atomic Habits", author: "James Clear", reason: "Helps build habits.", link: "#" },
+                { title: "The Power of Now", author: "Eckhart Tolle", reason: "Teaches mindfulness and living in the present.", link: "#" },
+                { title: "Think Like a Monk", author: "Jay Shetty", reason: "Offers ancient wisdom for a meaningful life.", link: "#" },
+                { title: "The Subtle Art of Not Giving a F***", author: "Mark Manson", reason: "Encourages embracing imperfections.", link: "#" },
+                { title: "You Are a Badass", author: "Jen Sincero", reason: "Motivates readers to overcome self-doubt.", link: "#" },
+                { title: "How to Win Friends and Influence People", author: "Dale Carnegie", reason: "Master communication skills.", link: "#" },
+                { title: "The 7 Habits of Highly Effective People", author: "Stephen Covey", reason: "Proven habits for success.", link: "#" },
+                { title: "Man’s Search for Meaning", author: "Viktor Frankl", reason: "Explores finding purpose even in adversity.", link: "#" },
+                { title: "Daring Greatly", author: "Brené Brown", reason: "Encourages embracing vulnerability.", link: "#" },
+                { title: "Can’t Hurt Me", author: "David Goggins", reason: "Overcome mental barriers for personal growth.", link: "#" }
+            ],
+            "fiction": [
+                { title: "To Kill a Mockingbird", author: "Harper Lee", reason: "Explores themes of racial injustice and moral growth.", link: "#" },
+                { title: "1984", author: "George Orwell", reason: "A dystopian novel that reflects on surveillance and totalitarianism.", link: "#" },
+                { title: "The Great Gatsby", author: "F. Scott Fitzgerald", reason: "A critique of the American Dream.", link: "#" },
+                { title: "Pride and Prejudice", author: "Jane Austen", reason: "A classic romance and social commentary.", link: "#" },
+                { title: "The Catcher in the Rye", author: "J.D. Salinger", reason: "Explores teenage angst and alienation.", link: "#" },
+                { title: "Moby Dick", author: "Herman Melville", reason: "An epic story of obsession and revenge.", link: "#" },
+                { title: "The Lord of the Rings", author: "J.R.R. Tolkien", reason: "A high-fantasy epic with themes of friendship and sacrifice.", link: "#" },
+                { title: "The Alchemist", author: "Paulo Coelho", reason: "A story about following dreams and listening to your heart.", link: "#" },
+                { title: "The Kite Runner", author: "Khaled Hosseini", reason: "Themes of redemption and friendship.", link: "#" },
+                { title: "The Book Thief", author: "Markus Zusak", reason: "A touching story set in Nazi Germany, exploring love and loss.", link: "#" }
+            ],
+            "science": [
+                { title: "A Brief History of Time", author: "Stephen Hawking", reason: "Explains the origins and structure of the universe.", link: "#" },
+                { title: "The Immortal Life of Henrietta Lacks", author: "Rebecca Skloot", reason: "Combines science with a personal story of ethical issues.", link: "#" },
+                { title: "Sapiens: A Brief History of Humankind", author: "Yuval Noah Harari", reason: "A fascinating take on the evolution of humanity.", link: "#" },
+                { title: "The Gene: An Intimate History", author: "Siddhartha Mukherjee", reason: "Explores the history of genetic research.", link: "#" },
+                { title: "The Body: A Guide for Occupants", author: "Bill Bryson", reason: "An accessible overview of the human body and how it works.", link: "#" },
+                { title: "Why We Sleep", author: "Matthew Walker", reason: "A deep dive into the importance of sleep.", link: "#" },
+                { title: "Cosmos", author: "Carl Sagan", reason: "A rich exploration of the universe and humanity's place in it.", link: "#" },
+                { title: "The Sixth Extinction", author: "Elizabeth Kolbert", reason: "Examines the history of mass extinctions.", link: "#" },
+                { title: "The Man Who Knew Infinity", author: "Robert Kanigel", reason: "The story of mathematician Srinivasa Ramanujan.", link: "#" },
+                { title: "The Emperor of All Maladies", author: "Siddhartha Mukherjee", reason: "A history of cancer and the efforts to cure it.", link: "#" }
+            ],
+            // Add more genres and books as needed
+        };
+
+        document.getElementById("genre-title").textContent = `${genre.charAt(0).toUpperCase() + genre.slice(1)} Books`;
+        const bookList = document.getElementById("book-list");
+
+        if (books[genre]) {
+            books[genre].forEach(book => {
+                const bookItem = document.createElement("div");
+                bookItem.classList.add("book-item");
+                bookItem.innerHTML = `
+                    <h3>${book.title}</h3>
+                    <p>By: ${book.author}</p>
+                    <p><em>Why it’s great:</em> ${book.reason}</p>
+                    <a href="${book.link}">Read more</a>
+                `;
+                bookList.appendChild(bookItem);
+            });
+        } else {
+            bookList.innerHTML = `<p>No books found for this genre.</p>`;
+        }
+    </script>
+</body>
+</html>

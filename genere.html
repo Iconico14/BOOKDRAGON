@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Dragon - Genres</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="genre-container">
+        <h2>Welcome, <span id="user-name"></span>! 💖</h2>
+        <p>What genre do you feel like exploring today? Pick one to see the best books for you!</p>
+        <div class="genre-grid">
+            <button class="genre-btn" onclick="selectGenre('self-help')">🌟 Self-Help</button>
+            <button class="genre-btn" onclick="selectGenre('finance')">💰 Finance</button>
+            <button class="genre-btn" onclick="selectGenre('fiction')">📖 Fiction</button>
+            <button class="genre-btn" onclick="selectGenre('science')">🔬 Science</button>
+            <button class="genre-btn" onclick="selectGenre('romance')">💞 Romance</button>
+            <!-- Add more genres here -->
+        </div>
+    </div>
+    <script>
+        const name = localStorage.getItem("userName");
+        document.getElementById("user-name").textContent = name || "Beautiful";
+
+        function selectGenre(genre) {
+            localStorage.setItem("selectedGenre", genre); // Save genre selection
+            window.location.href = "book.html"; // Redirect to books page
+        }
+    </script>
+</body>
+</html>

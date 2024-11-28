@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Dragon - Welcome</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="welcome-container">
+        <h1>Hey! I’m <span class="highlight">Book Dragon 🐉</span>!</h1>
+        <p>I'm here to guide you to books that will shape your personality! 📚 They say a book can change your life, and I’m here to help you choose the right ones. Let’s start your journey to becoming the best version of yourself!</p>
+        <img src="banner.jpg" alt="Book Dragon Banner" class="banner">
+        <!-- Replace 'banner.jpg' with your desired banner image -->
+        <button id="continue" class="continue-btn">Continue! I’m in 💖</button>
+    </div>
+    <script>
+        document.getElementById("continue").addEventListener("click", () => {
+            window.location.href = "signup.html"; // Redirect to the signup page
+        });
+    </script>
+</body>
+</html>
